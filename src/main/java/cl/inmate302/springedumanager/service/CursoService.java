@@ -38,8 +38,6 @@ public class CursoService {
         cursoExistente.setDescripcion(cursoData.getDescripcion());
         cursoExistente.setFechaInicio(cursoData.getFechaInicio());
         cursoExistente.setFechaFin(cursoData.getFechaFin());
-        cursoExistente.setEvaluaciones(cursoData.getEvaluaciones());
-        cursoExistente.setEstudiantes(cursoData.getEstudiantes());
 
         return repository.save(cursoExistente);
     }
