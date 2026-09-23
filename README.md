@@ -122,3 +122,183 @@ R = Lectura
 W = Escritura
 
 ## REST API
+De la misma manera se protegen los endpoints en los controladores rest para exponer Cursos y Estudiantes para operaciones CRUD con
+mapeos Get, Post, Put y delete. Evaluaciones también se expone con un controlador REST pero tan sólo la función get y así brindar una lista de evaluaciones.
+
+Los endpoints serían:
+```
+/api/v1/cursos
+api/v1/estudiantes
+/api/v1/evaluaciones
+```
+
+Puedes probar los endpoints en tu línea de comandos usando curl:
+
+### Cursos
+#### Listar todos los cursos
+```
+curl -i -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/cursos
+```
+
+#### Obtener un curso
+```
+curl -i -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/cursos/1
+```
+
+#### Crear un curso
+```
+curl -i -X POST \ 
+ -u 'admin@bootcamp.net:admin2026' \
+ -H "Content-Type: application/json" \
+ -d '{
+"nombre": "Programación Java",
+"descripcion": "Curso de Java y Spring Boot",
+"fechaInicio": "2026-09-11",
+"fechaFin": "2026-10-11"
+}' \
+http://localhost:8080/api/v1/cursos
+```
+
+#### Actualizar un curso
+```
+curl -i -X PUT \
+  -u 'admin@bootcamp.net:admin2026' \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre": "Programación Java",
+    "descripcion": "Curso de Java y Spring Boot",
+    "fechaInicio": "2026-09-22",
+    "fechaFin": "2026-11-22"
+  }' \
+  http://localhost:8080/api/v1/cursos/1
+
+```
+
+#### Borrar un curso
+```
+curl -i -X DELETE \
+  -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/cursos/1
+```
+
+### Estudiantes
+
+#### Listar todos los estudiantes
+```
+curl -i -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/estudiantes
+```
+
+#### Obtener un estudiante
+```
+curl -i -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/estudiantes/1
+```
+
+#### Crear un estudiante
+```
+curl -i -X POST \
+  -u 'admin@bootcamp.net:admin2026' \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre": "Ana",
+    "email": "ana@bootcamp.net",
+    "password": "ana2026",
+    "fechaRegistro": "2026-08-03"
+  }' \
+  http://localhost:8080/api/v1/estudiantes
+```
+
+#### Actualizar un estudiante
+```
+curl -i -X PUT \
+  -u 'admin@bootcamp.net:admin2026' \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nombre": "Ana",
+    "email": "ana@bootcamp.net",
+    "password": "ana2026",
+    "fechaRegistro": "2026-08-03"
+  }' \
+  http://localhost:8080/api/v1/estudiantes/1
+```
+
+#### Borrar a un estudiante
+```
+curl -i -X DELETE \
+  -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/estudiantes/1
+```
+
+### Evaluaciones
+
+#### Listar todas las evaluaciones
+```
+curl -i -u 'admin@bootcamp.net:admin2026' \
+  http://localhost:8080/api/v1/evaluaciones
+```
+
+## Estructura de archivos
+```
+├── pom.xml
+├── README.md
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── cl
+│   │   │       └── inmate302
+│   │   │           └── springedumanager
+│   │   │               ├── api
+│   │   │               │   ├── CursoRestController.java
+│   │   │               │   ├── EstudianteRestController.java
+│   │   │               │   └── EvaluacionRestController.java
+│   │   │               ├── config
+│   │   │               │   └── DataInitializer.java
+│   │   │               ├── domain
+│   │   │               │   ├── Curso.java
+│   │   │               │   ├── Estudiante.java
+│   │   │               │   ├── Evaluacion.java
+│   │   │               │   └── Rol.java
+│   │   │               ├── dto
+│   │   │               │   ├── CursoDTO.java
+│   │   │               │   ├── EstudianteDTO.java
+│   │   │               │   └── EvaluacionDTO.java
+│   │   │               ├── repository
+│   │   │               │   ├── CursoRepository.java
+│   │   │               │   ├── EstudianteRepository.java
+│   │   │               │   └── EvaluacionRepository.java
+│   │   │               ├── security
+│   │   │               │   └── SecurityConfig.java
+│   │   │               ├── service
+│   │   │               │   ├── CursoService.java
+│   │   │               │   ├── EstudianteService.java
+│   │   │               │   └── EvaluacionService.java
+│   │   │               ├── SpringEduManagerApplication.java
+│   │   │               └── web
+│   │   │                   ├── AuthController.java
+│   │   │                   ├── CursoController.java
+│   │   │                   ├── DashboardController.java
+│   │   │                   ├── EstudianteController.java
+│   │   │                   └── EvaluacionController.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── static
+│   │       │   └── css
+│   │       │       └── styles.css
+│   │       └── templates
+│   │           ├── cursos
+│   │           │   ├── form.html
+│   │           │   └── list.html
+│   │           ├── dashboard.html
+│   │           ├── estudiantes
+│   │           │   ├── form.html
+│   │           │   └── list.html
+│   │           ├── evaluaciones
+│   │           │   ├── form.html
+│   │           │   └── list.html
+│   │           ├── fragments.html
+│   │           └── login.html
+```
+
