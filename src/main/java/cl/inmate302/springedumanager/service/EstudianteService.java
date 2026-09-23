@@ -37,7 +37,6 @@ public class EstudianteService {
         estudianteExistente.setNombre(estudianteData.getNombre());
         estudianteExistente.setEmail(estudianteData.getEmail());
         estudianteExistente.setPassword(estudianteData.getPassword());
-        estudianteExistente.getRol();
         estudianteExistente.setFechaRegistro(estudianteData.getFechaRegistro());
 
         return repository.save(estudianteExistente);
