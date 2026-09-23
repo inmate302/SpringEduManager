@@ -51,9 +51,9 @@ alumno@bootcamp.net / 1234
 
 Se requiere de una webapp educativa que permita gestionar estudiantes, cursos y evaluaciones. Por lo tanto requeriremos los siguientes Modelos:
 
-    - Curso
-    - Estudiante
-    - Evaluacion
+- Curso
+- Estudiante
+- Evaluacion
 
 Estos son los modelos de dominio que manejarán nuestra lógica de negocio y darán origen a nuestras entidades, controladores y servicios.
 
@@ -95,9 +95,9 @@ También se considera dentro de los modelos el enum Rol, del cuál se desprenden
     - EvaluacionController -> acceso a vista de evaluaciones
 
 Desde el inico de sesión, cada controlador permite acceso a su modelo o vista a través de su respectivo endpoint:
-    - /cursos
-    - /estudiantes
-    - /evaluaciones
+- /cursos
+- /estudiantes
+- /evaluaciones
 
 En su respectiva vista:
 
@@ -105,7 +105,7 @@ En su respectiva vista:
     │       │   ├── form.html <- formulario de creación
     │       │   └── list.html <- modelo y sus elementos
 
-Quién puede acceder a qué y cómo depende de los endpoints configuradoes en SecurityConfig y como estos están protegidos en cada controlador con:
+Quién puede acceder a qué y cómo depende de los endpoints configurados en SecurityConfig y como estos están protegidos en cada controlador con:
 
 ```Java
 @PreAuthorize("hasRole('ADMIN')")
