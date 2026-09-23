@@ -128,7 +128,7 @@ mapeos Get, Post, Put y delete. Evaluaciones también se expone con un controlad
 Los endpoints serían:
 ```
 /api/v1/cursos
-api/v1/estudiantes
+/api/v1/estudiantes
 /api/v1/evaluaciones
 ```
 
